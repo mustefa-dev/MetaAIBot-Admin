@@ -98,7 +98,7 @@ export default defineNuxtConfig({
     cssPath: '~/assets/css/main.css'
   },
 
-  ssr: false, // SPA mode for easier Docker deployment
+  ssr: true, // SSR mode with Nuxt server
 
   runtimeConfig: {
     public: {
