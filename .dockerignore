@@ -1,0 +1,38 @@
+# Git
+.git
+.gitignore
+
+# IDE
+.idea
+.vscode
+*.swp
+*.swo
+
+# .NET
+**/bin
+**/obj
+**/*.user
+**/*.suo
+
+# Node
+**/node_modules
+**/.nuxt
+**/.output
+**/dist
+
+# Logs
+**/logs
+**/*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+Dockerfile*
+docker-compose*
+.dockerignore
+
+# Documentation
+*.md
+LICENSE

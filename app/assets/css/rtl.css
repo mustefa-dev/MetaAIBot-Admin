@@ -1,0 +1,139 @@
+/* RTL Specific Overrides */
+
+/* Direction utilities for RTL */
+html[dir="rtl"] {
+  /* Sidebar positioning */
+  .sidebar {
+    @apply start-0 end-auto border-e border-s-0;
+  }
+
+  /* Main content */
+  .main-content {
+    @apply ps-64 pe-0;
+  }
+
+  .main-content-collapsed {
+    @apply ps-20 pe-0;
+  }
+
+  /* Transform fixes */
+  .rotate-180-rtl {
+    @apply rotate-180;
+  }
+
+  /* Text alignment */
+  .text-start {
+    text-align: right;
+  }
+
+  .text-end {
+    text-align: left;
+  }
+
+  /* Table alignment */
+  .table {
+    text-align: right;
+  }
+
+  /* Modal positioning */
+  .modal-content {
+    direction: rtl;
+  }
+
+  /* Toast border */
+  .toast-success,
+  .toast-error,
+  .toast-warning,
+  .toast-info {
+    border-left: none;
+    @apply border-e-4;
+  }
+
+  /* Dropdown alignment */
+  .dropdown-menu {
+    @apply end-0 start-auto;
+  }
+
+  /* Icon margins */
+  .icon-start {
+    @apply me-2 ms-0;
+  }
+
+  .icon-end {
+    @apply ms-2 me-0;
+  }
+
+  /* Form elements */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  input[type="search"],
+  input[type="tel"],
+  input[type="url"],
+  textarea,
+  select {
+    direction: rtl;
+    text-align: right;
+  }
+
+  /* Checkbox/Radio labels */
+  .checkbox-label,
+  .radio-label {
+    @apply ps-0 pe-2;
+  }
+
+  /* Progress bar direction */
+  .progress-bar {
+    @apply origin-right;
+  }
+
+  /* Breadcrumb separator */
+  .breadcrumb-separator {
+    @apply rotate-180;
+  }
+
+  /* Pagination */
+  .pagination-prev {
+    @apply rotate-180;
+  }
+
+  .pagination-next {
+    @apply rotate-180;
+  }
+
+  /* Collapse icons */
+  .collapse-icon {
+    @apply rotate-180;
+  }
+
+  /* Chart tooltips */
+  .apexcharts-tooltip {
+    direction: rtl;
+  }
+
+  /* Number inputs - keep LTR for numbers */
+  input[type="number"] {
+    direction: ltr;
+    text-align: left;
+  }
+
+  /* Phone number inputs */
+  input[type="tel"] {
+    direction: ltr;
+    text-align: left;
+  }
+
+  /* Price displays */
+  .price {
+    direction: ltr;
+    unicode-bidi: embed;
+  }
+}
+
+/* LTR specific (when switching from RTL default) */
+html[dir="ltr"] {
+  body {
+    @apply font-sans;
+  }
+}
