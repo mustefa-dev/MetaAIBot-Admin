@@ -16,7 +16,7 @@ RUN npm ci --prefer-offline --no-audit
 COPY . .
 
 # Set build-time environment variables
-ARG NUXT_PUBLIC_API_BASE=https://misk-city-api.taco5k.site
+ARG NUXT_PUBLIC_API_BASE=https://misk-city-api.taco5k.site/api
 ENV NUXT_PUBLIC_API_BASE=${NUXT_PUBLIC_API_BASE}
 
 # Build the application
