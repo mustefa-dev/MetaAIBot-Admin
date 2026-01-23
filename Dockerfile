@@ -1,20 +1,18 @@
-# Frontend with nginx proxy
+# Build stage
 FROM node:20-alpine AS build
 WORKDIR /app
 COPY package*.json ./
 RUN npm install --prefer-offline --no-audit --no-fund
 COPY . ./
+ARG NUXT_PUBLIC_API_BASE=/api
+ENV NUXT_PUBLIC_API_BASE=${NUXT_PUBLIC_API_BASE}
 ENV NODE_OPTIONS="--max-old-space-size=2048"
 RUN npm run generate
 
-FROM nginx:alpine
-# Copy built frontend
-COPY --from=build /app/.output/public /usr/share/nginx/html
-# Copy nginx config template
-COPY nginx.frontend.conf /etc/nginx/templates/default.conf.template
-EXPOSE 80
-
-# Default API host - change via environment variable
-ENV API_HOST=metabot-api
-
-CMD ["nginx", "-g", "daemon off;"]
+# Production stage - simple static server
+FROM node:20-alpine
+WORKDIR /app
+RUN npm install -g serve
+COPY --from=build /app/.output/public ./public
+EXPOSE 3000
+CMD ["serve", "-s", "public", "-l", "3000"]
