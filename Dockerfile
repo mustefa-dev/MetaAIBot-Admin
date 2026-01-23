@@ -8,11 +8,13 @@ ARG NUXT_PUBLIC_API_BASE=/api
 ENV NUXT_PUBLIC_API_BASE=${NUXT_PUBLIC_API_BASE}
 ENV NODE_OPTIONS="--max-old-space-size=2048"
 RUN npm run generate
+# Debug: show what was generated
+RUN ls -la .output/ || echo "No .output directory"
+RUN ls -la .output/public/ || echo "No .output/public directory"
+RUN ls -la dist/ || echo "No dist directory"
 
-# Production stage - simple static server
-FROM node:20-alpine
-WORKDIR /app
-RUN npm install -g serve
-COPY --from=build /app/.output/public ./public
-EXPOSE 3000
-CMD ["serve", "-s", "public", "-l", "3000"]
+# Production stage - nginx for static files
+FROM nginx:alpine
+COPY --from=build /app/.output/public /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
