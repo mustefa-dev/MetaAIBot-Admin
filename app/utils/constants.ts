@@ -108,6 +108,24 @@ export const API_ENDPOINTS = {
     LIST: '/admin/knowledge',
     DETAIL: (id: string) => `/admin/knowledge/${id}`
   },
+  // Style Learning
+  STYLE_LEARNING: {
+    ACCOUNTS: '/admin/style/accounts',
+    IMPORT_FROM_ACCOUNT: (accountId: string) => `/admin/style/import/account/${accountId}`,
+    IMPORT: '/admin/style/import',
+    IMPORT_PROGRESS: '/admin/style/import/progress',
+    IMPORT_STATISTICS: '/admin/style/import/statistics',
+    IMPORT_RESUME: '/admin/style/import/resume',
+    ANALYZE: '/admin/style/analyze',
+    PROFILE: '/admin/style/profile',
+    WEIGHT: '/admin/style/weight',
+    ACTIVE: '/admin/style/active',
+    PREVIEW: '/admin/style/preview',
+    PATTERNS: '/admin/style/patterns',
+    ADD_PATTERN: '/admin/style/patterns/add',
+    REMOVE_PATTERN: (type: string, pattern: string) => `/admin/style/patterns/${type}/${encodeURIComponent(pattern)}`,
+    PROMPT: '/admin/style/prompt'
+  },
   // Stats
   STATS: {
     DASHBOARD: '/admin/stats',

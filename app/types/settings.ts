@@ -134,3 +134,113 @@ export interface UpdateAIProviderConfigRequest {
   dailyLimit?: number
   model?: string
 }
+
+// Style Learning Types
+export interface StyleProfile {
+  ownerId: string
+  isActive: boolean
+  styleWeight: number
+  totalMessagesAnalyzed: number
+  lastAnalyzedAt: string | null
+  formality: string
+  warmth: string
+  directness: string
+  responseLength: string
+  emojiFrequency: number
+}
+
+export interface StylePatterns {
+  greetings: PatternItem[]
+  closings: PatternItem[]
+  favoritePhrases: PatternItem[]
+  endearments: PatternItem[]
+  emojis: PatternItem[]
+  tone: ToneProfile
+  exampleResponses: string[]
+}
+
+export interface PatternItem {
+  pattern: string
+  count?: number
+  frequency?: number
+}
+
+export interface ToneProfile {
+  formality: string
+  warmth: string
+  directness: string
+  responseLength: string
+  emojiFrequency: number
+}
+
+export interface ImportProgress {
+  pageId: string
+  status: 'pending' | 'in_progress' | 'completed' | 'failed'
+  totalConversations: number
+  processedConversations: number
+  ownerMessagesImported: number
+  customerMessagesImported: number
+  progressPercentage: number
+  startedAt: string
+  completedAt: string | null
+  errorMessage: string | null
+}
+
+export interface ImportStatistics {
+  totalMessages: number
+  ownerMessages: number
+  customerMessages: number
+  analyzedMessages: number
+  unanalyzedMessages: number
+  oldestMessageDate: string | null
+  newestMessageDate: string | null
+  lastImportDate: string | null
+}
+
+export interface ImportHistoryRequest {
+  pageId: string
+  accessToken: string
+  since?: string
+}
+
+export interface ImportResult {
+  success: boolean
+  errorMessage: string | null
+  conversationsProcessed: number
+  ownerMessagesImported: number
+  customerMessagesImported: number
+  totalMessagesImported: number
+  duration: string
+  hasMore: boolean
+}
+
+export interface StyleAnalysisResult {
+  success: boolean
+  errorMessage: string | null
+  messagesAnalyzed: number
+  patternsExtracted: number
+  duration: string
+  patterns: StylePatterns | null
+}
+
+export interface StylePreviewResult {
+  customerMessage: string
+  generatedResponse: string
+  stylePromptUsed: string
+  styleApplied: boolean
+}
+
+export interface AddPatternRequest {
+  patternType: 'greeting' | 'closing' | 'phrase' | 'endearment' | 'emoji'
+  pattern: string
+}
+
+export interface ConnectedAccountForImport {
+  id: string
+  accountName: string
+  platform: string
+  pageId: string
+  profilePictureUrl: string | null
+  connectedAt: string
+  hasToken: boolean
+}

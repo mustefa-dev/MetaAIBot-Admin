@@ -178,7 +178,8 @@ const settingsItems = computed(() => [
   { to: '/settings', icon: 'cog', label: t('nav.settings') },
   { to: '/settings/templates', icon: 'template', label: t('nav.templates') },
   { to: '/settings/knowledge', icon: 'book', label: t('nav.knowledge') },
-  { to: '/settings/ai-providers', icon: 'chip', label: t('nav.aiProviders') }
+  { to: '/settings/ai-providers', icon: 'chip', label: t('nav.aiProviders') },
+  { to: '/settings/style-learning', icon: 'sparkles', label: t('nav.styleLearning') }
 ])
 
 const sidebarClasses = computed(() => [
